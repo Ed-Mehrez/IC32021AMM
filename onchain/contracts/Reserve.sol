@@ -13,7 +13,8 @@ contract Reserve {
   address private constant UNISWAP_V3_ROUTER = 0xE592427A0AEce92De3Edee1F18E0157C05861564;
   address private constant USDC = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
   address private constant UNISWAP_V3_IQUOTER = 0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6;
-  uint24 constant FEE = 3000; // 0.3%
+  uint24 private constant FEE = 3000; // 0.3%
+  unit24 private constant TRANSACTION_BUFFER_TIME = 60;
   ISwapRouter public immutable _uniswapRouter;
   address private immutable WETH;
 
@@ -60,7 +61,7 @@ contract Reserve {
       address(tokenOut),
       FEE,
       address(this), // recipient
-      block.timestamp + 62, // deadline
+      block.timestamp + TRANSACTION_BUFFER_TIME, // deadline
       amountIn, // amountIn
       amountOut, // amountOutMinimum
       0 // sqrtPriceLimitX96. Ignore pool price limits
@@ -75,7 +76,7 @@ contract Reserve {
       address(tokenOut),
       FEE,
       address(this), // recipient
-      block.timestamp + 62, // deadline
+      block.timestamp + TRANSACTION_BUFFER_TIME, // deadline
       amountOut, // amountOut
       amountIn, // amountInMaximum
       0 // sqrtPriceLimitX96. Ignore pool price limits
