@@ -3,7 +3,7 @@ pragma solidity >=0.6.0;
 
 contract Verifier {
 
-    bytes32 private constant enclavepk;
+    bytes32 private enclavepk;
 
     constructor(bytes32 _enclavepk) {
         enclavepk = _enclavepk;
@@ -33,9 +33,6 @@ contract Verifier {
         else deliveryAddress = ecrecover(_message, v, r, s); // return
 
         return deliveryAddress;
-    }
-
-
     }
 
 }
