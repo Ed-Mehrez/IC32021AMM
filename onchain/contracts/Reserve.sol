@@ -22,10 +22,6 @@ contract Reserve {
     WETH = IPeripheryImmutableState(UNISWAP_V3_ROUTER).WETH9();
   }
 
-  event AmountOut(uint256 quoteResult);
-
-  event BuyOptionsResult(uint amountOptionDesired, int256 delta, bool sucess, string msg, uint256 weth_balance);
-
   event CurrentBalance(uint256 wETHAmount);
   function rebalance(int256 delta) external {
     _rebalance(delta);
