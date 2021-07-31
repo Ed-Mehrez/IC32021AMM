@@ -45,7 +45,7 @@ contract Reserve {
     uint256 absoluateDelta = uint256(delta < 0 ? -delta : delta);
 
     if (delta > 0) {
-      // for the sake of this demo, we set the maximum USDC we to MAX_INT.
+      // for the sake of this demo, we set the maximum USDC we spend to MAX_INT.
       _swapTokensExactOutput(IERC20(USDC), MAX_INT, IWETH9(WETH), absoluateDelta);
     } else if (delta < 0) {
       // for the sake of this demo, we set the minimum USDC we get to 0.
