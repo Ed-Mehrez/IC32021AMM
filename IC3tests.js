@@ -25,7 +25,7 @@ async function init() {
         HCDeployedNetwork.address
     )
 
-    console.log(['hedging contract address:', hedgingcontract])
+    console.log(['hedging contract address:', hedgingcontract.address])
 
     const RouterDeployedNetwork = Router.networks[networkId]
     const router = new web3.eth.Contract(
