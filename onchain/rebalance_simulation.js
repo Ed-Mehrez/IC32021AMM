@@ -42,12 +42,12 @@ module.exports = async (callback) => {
     console.log("Setting up reserve..");
     Reserve.defaults({from: account});
     let instance = await Reserve.deployed();
-    console.log("Injecting 3000 eth to reserve");
-    await instance.injectETHToContract({value: ethers.utils.parseEther('3000.0')});
+    console.log("Injecting 20 eth to reserve");
+    await instance.injectETHToContract({value: ethers.utils.parseEther('20.0')});
     let balance = await instance.getWETHBalance();
     console.log("Check eth balance: " + web3.utils.fromWei(new web3.utils.BN(balance)));
     console.log("Converting 1000 ETH to USDC...");
-    await instance.convertWEthToUSDC(ethers.utils.parseEther('1000.0'), 0);
+    await instance.convertWEthToUSDC(ethers.utils.parseEther('10.0'), 0);
     balance = await instance.getWETHBalance();
     console.log("Check eth balance: " + web3.utils.fromWei(new web3.utils.BN(balance)));
     let usdc_balance = await instance.getUSDCBalance();
@@ -65,7 +65,7 @@ module.exports = async (callback) => {
 
         let rand = 0;
         while (rand == 0) {
-            rand = Math.floor(Math.random() * 11) - 5;
+            rand = Math.random() * 2 - 1;
         }
 
         console.log(`Rebalance delta is ${rand}`);
@@ -75,7 +75,6 @@ module.exports = async (callback) => {
         balanceInNumber = await web3.utils.fromWei(new web3.utils.BN(balance))
         console.log(`Post rebalance, reserve balance: ${balanceInNumber}`);
     };
-    console.log("get started?")
     setAsyncInterval(rebalanceSimulation, 8000);
 };
 
