@@ -7,7 +7,8 @@ const Web3 = require('web3')
 // connect to network
 const url = '3.239.167.241'
 const port = 8545
-const web3 = new Web3(`ws://${url}:${port}/`) // https? not connecting
+const web3Provider = new Web3.providers.HttpProvider(`http://${url}:${port}/`);
+const web3 = new Web3(web3Provider) // https? not connecting
 
 // connect to web3 provider, use default account for signing
 async function init() {
