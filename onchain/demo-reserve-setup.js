@@ -20,7 +20,7 @@ module.exports = async (callback) => {
     console.log("Setting up reserve..");
     Reserve.defaults({from: account});
     let instance = await Reserve.deployed();
-    console.log("Injecting 10000 eth to reserve");
+    console.log("Injecting 30000 eth to reserve");
     await instance.injectETHToContract({value: ethers.utils.parseEther('30000.0')});
     let balance = await instance.getWETHBalance();
     console.log("Check eth balance: " + web3.utils.fromWei(new web3.utils.BN(balance)));
