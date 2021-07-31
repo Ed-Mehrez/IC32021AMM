@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@truffle/contract": "^4.3.27",
     "@uniswap/v3-sdk": "^3.3.1",
     "truffle-hdwallet-provider": "^1.0.17"
   }
