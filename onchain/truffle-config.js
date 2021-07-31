@@ -21,6 +21,11 @@ module.exports = {
       port: 8545,
       network_id: "*"
     },
+    aws: {
+      host: "3.239.167.241",
+      port: 8545,
+      network_id: "*"
+    },
     rinkeby: {
       provider: function() {
         return new HDWalletProvider(MNEMONIC,RINKEBY_URL)
