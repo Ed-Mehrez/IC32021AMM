@@ -12310,14 +12310,36 @@
         }
       },
       "links": {
-        "UniswapLib": "0xd53024918280DFCF42b06B2bf3043C4a61f5F4D3"
+        "UniswapLib": "0x970dEC0c886e3fbF1B46097ca5Fa56e249484A65"
       },
-      "address": "0x755b624092C4EB64c2784502E854eb04c8FdEA6E",
-      "transactionHash": "0x7501ef4255a8c697e70ec9d35b022ab70c1cb259db9592c9343e0092cb8bb62b"
+      "address": "0x2e1984b15E4B795C6181d1215136E2267e83916a",
+      "transactionHash": "0xe189eb654282d1f2a37c9abd3f2a78003e54d1323481b54006b5104a074a6e17"
+    },
+    "2": {
+      "events": {
+        "0xccd63b477c883a586271d6c5e65e8a82327bddc52ed1908a1078708f8c5c101a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "wETHAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "CurrentBalance",
+          "type": "event"
+        }
+      },
+      "links": {
+        "UniswapLib": "0x2c17f8BD473354cE88dc1A7D81e46Ffe061A4aA8"
+      },
+      "address": "0x336a83ECcEBB88915e231fb8B31C2D865d380046",
+      "transactionHash": "0x36d911daf598465f30b77df0f526c72fb724f36059409f93d082ee54465ad407"
     }
   },
   "schemaVersion": "3.4.2",
-  "updatedAt": "2021-07-31T14:03:39.488Z",
+  "updatedAt": "2021-07-31T14:21:25.851Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
