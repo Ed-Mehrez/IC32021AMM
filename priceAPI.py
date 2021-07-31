@@ -45,15 +45,22 @@ def processPriceRequest():
     sigma = data['sigma'] # Underlier volatility
 
     # dump variables to file for enclave to access
-    # with open("enclave_bsm_input.txt", "w") as inputs:
-    #     inputs.write(f'{expiration},{currentStockPrice},{strike},0,{sigma}')
+    with open("enclave_bsm_input.txt", "w") as inputs:
+        inputs.write(f'{expiration},{currentStockPrice},{strike},0,{sigma}')
 
     # Run secure BSM computation
-    # os.system('run enclave script') # Might want to use subprocess for more options
+    os.system(
+        "./sgx/app/app --sign \\\n"
+        "--enclave-path `pwd`/sgx/enclave/enclave.signed.so \\\n"
+        "--sealedprivkey sealedprivkey.bin \\\n"
+        "--signature bsm.signature \\\n"
+        "--output-file bsm.out \\\n"
+        "./enclave_bsm_input"
+    ) # Might want to use subprocess for more options
 
     # enclave sends results to chain (can send back 'here' first if needed, in which case import web3, contract ABIs)
-    # with open('enclave_bsm_output.txt', 'r') as outputs:
-    #     return jsonify({ "outputs": f.read() })
+    with open('enclave_bsm_output.txt', 'r') as outputs:
+        return jsonify({ "outputs": outputs.read() })
 
 # Run server on local machine
 if __name__ == '__main__':
