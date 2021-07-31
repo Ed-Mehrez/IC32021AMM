@@ -35,12 +35,14 @@ def createRequestURL(endpoint):
 	return apiURL + endpoint
 
 # Handle request for price
-@app.route(createRequestURL('/request-price'), methods=['GET'])
+@app.route(createRequestURL('/request-price'), methods=['POST'])
 def processPriceRequest():
-    expiration = request.args.get('expiration') #! Needs to be days to expiration
-    currentStockPrice = request.args.get('current_stock_price')
-    strike = request.args.get('strike')
-    sigma = request.args.get('sigma') # Underlier volatility
+    data = request.get_json(force=True)
+
+    expiration = data['expiration'] #! Needs to be days to expiration
+    currentStockPrice = data['current_stock_price']
+    strike = data['strike']
+    sigma = data['sigma'] # Underlier volatility
 
     # dump variables to file for enclave to access
     # with open("enclave_bsm_input.txt", "w") as inputs:
