@@ -2,6 +2,7 @@
 import json
 # import numpy as np
 # import subprocess
+import os
 
 from flask import Flask, request, jsonify, json
 # from flask_cors import CORS, cross_origin
@@ -34,18 +35,25 @@ def createRequestURL(endpoint):
 	return apiURL + endpoint
 
 # Handle request for price
-@app.route(createRequestURL('/request-price'), methods=['GET'])
+@app.route(createRequestURL('/request-price'), methods=['POST'])
 def processPriceRequest():
-	expiration = request.args.get('expiration')
-    spotprice = request.args.get("spotprice")
-    strikeprice = request.args.get("strikeprice")
-    sigma = request.args.get("underliervolatility")
+    data = request.get_json(force=True)
+
+    expiration = data['expiration'] #! Needs to be days to expiration
+    currentStockPrice = data['current_stock_price']
+    strike = data['strike']
+    sigma = data['sigma'] # Underlier volatility
 
     # dump variables to file for enclave to access
+    # with open("enclave_bsm_input.txt", "w") as inputs:
+    #     inputs.write(f'{expiration},{currentStockPrice},{strike},0,{sigma}')
 
-    # tell enclave to compute BSM
+    # Run secure BSM computation
+    # os.system('run enclave script') # Might want to use subprocess for more options
 
     # enclave sends results to chain (can send back 'here' first if needed, in which case import web3, contract ABIs)
+    # with open('enclave_bsm_output.txt', 'r') as outputs:
+    #     return jsonify({ "outputs": f.read() })
 
 # Run server on local machine
 if __name__ == '__main__':

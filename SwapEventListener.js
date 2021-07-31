@@ -46,3 +46,5 @@ async function init() {
         
     })
 }
+
+init()
