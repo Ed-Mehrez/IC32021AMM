@@ -38,8 +38,8 @@ async function init() {
         let dat = e.returnValues
         console.log([dat])
 
-        let fulfillrequest = await hedgincontract.methods
-            .fulfill(...)
+       // let fulfillrequest = await hedgincontract.methods
+       //     .fulfill(...)
         
         let gasAmount = await fulfillprice.estimateGas()
         await fulfillrequest.send({ from: addresses[0], gas: gasAmount })
