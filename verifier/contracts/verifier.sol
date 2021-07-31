@@ -3,20 +3,20 @@ pragma solidity >=0.6.0;
 
 contract Verifier {
 
-    bytes32 private enclavepk;
+    address immutable enclave;
 
-    constructor(bytes32 _enclavepk) {
-        enclavepk = _enclavepk;
+    constructor(address _enclave) {
+        enclave = _enclave;
     }
 
     function retrieveAddressFromSignature(bytes32 _message, bytes memory _signature) public pure returns(address) {
         bytes32 r;
         bytes32 s;
         uint8 v;
-        address deliveryAddress;
+        address enclaveAddress;
 
         // Check the signature length
-        if (_signature.length != 65) deliveryAddress = address(0); //return deliveryAddress
+        if (_signature.length != 65) enclaveAddress = address(0); //return deliveryAddress
 
         // Divide the signature in r, s and v variables
         assembly {
@@ -29,10 +29,10 @@ contract Verifier {
         if (v < 27) v += 27;
 
         // If the version is correct return the signer address
-        if (v != 27 && v != 28) deliveryAddress = address(0); //return
-        else deliveryAddress = ecrecover(_message, v, r, s); // return
+        if (v != 27 && v != 28) enclaveAddress = address(0); //return
+        else enclaveAddress = ecrecover(_message, v, r, s); // return
 
-        return deliveryAddress;
+        return enclaveAddress;
     }
 
 }
