@@ -7,9 +7,8 @@ import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import './interfaces/IWETH9.sol';
 
 /*
-Demo Contract, given the time constraint, edge cases and security checks are not implemented. Should use SafeMath for
-multiplication... etc.
-It's for demo purposes only.
+  Demo Contract, given the time constraint, edge cases and balance checks are not implemented.
+  It's for demo purposes only.
 */
 contract Reserve {
   using SafeERC20 for IERC20;
