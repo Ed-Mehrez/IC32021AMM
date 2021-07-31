@@ -37,14 +37,15 @@ def createRequestURL(endpoint):
 @app.route(createRequestURL('/request-price'), methods=['GET'])
 def processPriceRequest():
 	expiration = request.args.get('expiration')
+    spotprice = request.args.get("spotprice")
+    strikeprice = request.args.get("strikeprice")
+    sigma = request.args.get("underliervolatility")
 
     # dump variables to file for enclave to access
 
     # tell enclave to compute BSM
 
     # enclave sends results to chain (can send back 'here' first if needed, in which case import web3, contract ABIs)
-
-	# return jsonify()
 
 # Run server on local machine
 if __name__ == '__main__':
