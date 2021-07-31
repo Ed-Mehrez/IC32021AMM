@@ -74,7 +74,6 @@ contract Reserve {
 
   function _swapTokensExactOutput(IERC20 tokenIn, uint256 amountIn, IERC20 tokenOut, uint256 amountOut) internal {
     // For the sake of demo, setting the allowance to a big number for now.
-    //tokenIn.safeIncreaseAllowance(address(_uniswapRouter), 2**60);
     ISwapRouter.ExactOutputSingleParams memory params = ISwapRouter.ExactOutputSingleParams(
       address(tokenIn),
       address(tokenOut),
