@@ -2,7 +2,7 @@
 // local: truffle console --network development
 // aws: truffle console --network aws
 // in truffle console, run this file. that's it.
-// - exec ./demo-reserve-setup.js
+// - truffle exec ./demo-reserve-setup.js
 
 let ethers = require('ethers');
 const contract = require("@truffle/contract");
