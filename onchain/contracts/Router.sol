@@ -21,8 +21,6 @@ contract Router {
     // byte32 hash = keccak256(abi.encodePacked(delta));
     // if (_verifier.enclave() != _verifier.retrieveAddressFromSignature(hash, signature)) return;
 
-    // Fixed delta for this demo.
-    delta = 1 ether;
     _reserve.rebalance(delta);
   }
 
@@ -32,7 +30,6 @@ contract Router {
     _verifier.retrieveAddressFromSignature(hash, signature);
     // uncomment once the following is ready
     // if (_verifier.enclave() != _verifier.retrieveAddressFromSignature(hash, signature)) return;
-    delta = 1 ether;
     _reserve.buyOptions(amountOptions, delta);
   }
 }
